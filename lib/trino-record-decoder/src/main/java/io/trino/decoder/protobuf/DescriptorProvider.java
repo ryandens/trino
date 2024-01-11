@@ -14,6 +14,8 @@
 package io.trino.decoder.protobuf;
 
 import com.google.protobuf.Descriptors.Descriptor;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import io.trino.spi.TrinoException;
 
 import java.io.ByteArrayOutputStream;
@@ -34,7 +36,7 @@ public interface DescriptorProvider
     {
         requireNonNull(url, "url is null");
         ByteArrayOutputStream typeBytes = new ByteArrayOutputStream();
-        try (InputStream stream = new URL(url).openStream()) {
+        try (InputStream stream = Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).openStream()) {
             stream.transferTo(typeBytes);
         }
         catch (IOException e) {
