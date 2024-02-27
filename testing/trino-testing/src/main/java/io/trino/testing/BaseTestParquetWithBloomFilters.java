@@ -42,7 +42,7 @@ public abstract class BaseTestParquetWithBloomFilters
                 .matches(result -> result.getRowCount() == 1)
                 .matches(result -> {
                     String value = (String) result.getMaterializedRows().get(0).getField(1);
-                    return value.equals("true");
+                    return "true".equals(value);
                 });
     }
 

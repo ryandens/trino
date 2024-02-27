@@ -100,7 +100,7 @@ public enum InformationSchemaTable
 
     public static Optional<InformationSchemaTable> of(SchemaTableName schemaTableName)
     {
-        if (!schemaTableName.getSchemaName().equals(INFORMATION_SCHEMA)) {
+        if (!INFORMATION_SCHEMA.equals(schemaTableName.getSchemaName())) {
             return Optional.empty();
         }
         try {

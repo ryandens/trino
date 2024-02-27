@@ -80,7 +80,7 @@ public class DevelopmentPluginsProvider
             throws IOException
     {
         File file = new File(plugin);
-        if (file.isFile() && (file.getName().equals("pom.xml") || file.getName().endsWith(".pom"))) {
+        if (file.isFile() && ("pom.xml".equals(file.getName()) || file.getName().endsWith(".pom"))) {
             return buildClassLoaderFromPom(file, classLoaderFactory);
         }
         return buildClassLoaderFromCoordinates(plugin, classLoaderFactory);

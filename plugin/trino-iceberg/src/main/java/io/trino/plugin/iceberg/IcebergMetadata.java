@@ -2949,7 +2949,7 @@ public class IcebergMetadata
 
         Iterable<String> tableToSnapshotIds = Splitter.on(',').split(dependsOnTables);
         for (String entry : tableToSnapshotIds) {
-            if (entry.equals(UNKNOWN_SNAPSHOT_TOKEN)) {
+            if (UNKNOWN_SNAPSHOT_TOKEN.equals(entry)) {
                 // This is a "federated" materialized view (spanning across connectors). Trust user's choice and assume "fresh or fresh enough".
                 hasUnknownTables = true;
                 firstTableChange = Optional.empty();
@@ -3076,7 +3076,7 @@ public class IcebergMetadata
             verify(computedStatistic.getTableStatistics().isEmpty(), "Unexpected table statistics");
             for (Map.Entry<ColumnStatisticMetadata, Block> entry : computedStatistic.getColumnStatistics().entrySet()) {
                 ColumnStatisticMetadata statisticMetadata = entry.getKey();
-                if (statisticMetadata.getConnectorAggregationId().equals(NUMBER_OF_DISTINCT_VALUES_NAME)) {
+                if (NUMBER_OF_DISTINCT_VALUES_NAME.equals(statisticMetadata.getConnectorAggregationId())) {
                     Integer columnId = verifyNotNull(
                             columnNameToId.get(statisticMetadata.getColumnName()),
                             "Column not found in table: [%s]",

@@ -64,7 +64,7 @@ public class HudiPartitionInfoLoader
     {
         Optional<HudiPartitionInfo> partitionInfo = hudiDirectoryLister.getPartitionInfo(partitionName);
         partitionInfo.ifPresent(hudiPartitionInfo -> {
-            if (hudiPartitionInfo.doesMatchPredicates() || partitionName.equals("")) {
+            if (hudiPartitionInfo.doesMatchPredicates() || "".equals(partitionName)) {
                 List<HivePartitionKey> partitionKeys = hudiPartitionInfo.getHivePartitionKeys();
                 List<HudiFileStatus> partitionFiles = hudiDirectoryLister.listStatus(hudiPartitionInfo);
                 partitionFiles.stream()

@@ -426,7 +426,7 @@ public class Indexer
      */
     public static String getIndexTableName(String schema, String table)
     {
-        return schema.equals("default") ? table + "_idx" : schema + '.' + table + "_idx";
+        return "default".equals(schema) ? table + "_idx" : schema + '.' + table + "_idx";
     }
 
     /**
@@ -449,7 +449,7 @@ public class Indexer
      */
     public static String getMetricsTableName(String schema, String table)
     {
-        return schema.equals("default") ? table + "_idx_metrics"
+        return "default".equals(schema) ? table + "_idx_metrics"
                 : schema + '.' + table + "_idx_metrics";
     }
 

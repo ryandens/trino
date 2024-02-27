@@ -105,10 +105,10 @@ public class JmxMetadata
     public JmxTableHandle getTableHandle(SchemaTableName tableName)
     {
         requireNonNull(tableName, "tableName is null");
-        if (tableName.getSchemaName().equals(JMX_SCHEMA_NAME)) {
+        if (JMX_SCHEMA_NAME.equals(tableName.getSchemaName())) {
             return getJmxTableHandle(tableName);
         }
-        if (tableName.getSchemaName().equals(HISTORY_SCHEMA_NAME)) {
+        if (HISTORY_SCHEMA_NAME.equals(tableName.getSchemaName())) {
             return getJmxHistoryTableHandle(tableName);
         }
         return null;
@@ -241,8 +241,8 @@ public class JmxMetadata
     {
         requireNonNull(prefix, "prefix is null");
         if (prefix.getSchema().isPresent() &&
-                !prefix.getSchema().get().equals(JMX_SCHEMA_NAME) &&
-                !prefix.getSchema().get().equals(HISTORY_SCHEMA_NAME)) {
+                !JMX_SCHEMA_NAME.equals(prefix.getSchema().get()) &&
+                !HISTORY_SCHEMA_NAME.equals(prefix.getSchema().get())) {
             return emptyIterator();
         }
 
@@ -270,7 +270,7 @@ public class JmxMetadata
         Map<ColumnHandle, Domain> otherDomains = new LinkedHashMap<>();
         domains.forEach((column, domain) -> {
             JmxColumnHandle columnHandle = (JmxColumnHandle) column;
-            if (columnHandle.getColumnName().equals(NODE_COLUMN_NAME)) {
+            if (NODE_COLUMN_NAME.equals(columnHandle.getColumnName())) {
                 nodeDomains.put(column, domain);
             }
             else {

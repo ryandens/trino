@@ -124,7 +124,7 @@ public final class PlanNodeStatsSummarizer
                 }
                 // Skip DynamicFilterSourceOperator as input operator as for join build side HashBuilderOperator metrics
                 // should be reported
-                if (operatorStats.getOperatorType().equals("DynamicFilterSourceOperator")) {
+                if ("DynamicFilterSourceOperator".equals(operatorStats.getOperatorType())) {
                     continue;
                 }
                 if (processedNodes.contains(planNodeId)) {

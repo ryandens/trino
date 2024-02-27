@@ -995,7 +995,7 @@ public final class StateCompiler
         ImmutableList.Builder<StateField> builder = ImmutableList.builder();
         for (Method method : clazz.getMethods()) {
             // ignore default methods
-            if (method.isDefault() || method.getName().equals("getEstimatedSize")) {
+            if (method.isDefault() || "getEstimatedSize".equals(method.getName())) {
                 continue;
             }
             if (method.getName().startsWith("get")) {
@@ -1071,12 +1071,12 @@ public final class StateCompiler
                 continue;
             }
 
-            if (method.getName().equals("copy")) {
+            if ("copy".equals(method.getName())) {
                 checkArgument(method.getParameterTypes().length == 0, "copy may not have parameters");
                 continue;
             }
 
-            if (method.getName().equals("getEstimatedSize")) {
+            if ("getEstimatedSize".equals(method.getName())) {
                 checkArgument(method.getReturnType().equals(long.class), "getEstimatedSize must return long");
                 checkArgument(method.getParameterTypes().length == 0, "getEstimatedSize may not have parameters");
                 continue;

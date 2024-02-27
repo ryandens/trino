@@ -1171,13 +1171,13 @@ public class TrinoPreparedStatement
         if (topLevelMatcher.matches()) {
             topLevelType = topLevelMatcher.group(1);
             String typeParameters = topLevelMatcher.group(2);
-            if (topLevelType.equals("decimal")) {
+            if ("decimal".equals(topLevelType)) {
                 List<String> precisionAndScale = Splitter.on(',').splitToList(typeParameters);
                 checkArgument(precisionAndScale.size() == 2, "Invalid decimal parameters: %s", typeParameters);
                 arguments.add(ClientTypeSignatureParameter.ofLong(parseLong(precisionAndScale.get(0))));
                 arguments.add(ClientTypeSignatureParameter.ofLong(parseLong(precisionAndScale.get(1))));
             }
-            else if (topLevelType.equals("char") || topLevelType.equals("varchar")) {
+            else if ("char".equals(topLevelType) || "varchar".equals(topLevelType)) {
                 long precision = parseLong(typeParameters);
                 arguments.add(ClientTypeSignatureParameter.ofLong(precision));
             }
@@ -1196,7 +1196,7 @@ public class TrinoPreparedStatement
             }
             else {
                 topLevelType = type;
-                if (topLevelType.equals("varchar")) {
+                if ("varchar".equals(topLevelType)) {
                     arguments.add(ClientTypeSignatureParameter.ofLong(VARCHAR_UNBOUNDED_LENGTH));
                 }
             }

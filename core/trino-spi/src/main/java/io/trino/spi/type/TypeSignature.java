@@ -113,11 +113,11 @@ public final class TypeSignature
 
         // TODO: this is somewhat of a hack. We need to evolve TypeSignature to be more "structural" for the special types, similar to DataType from the AST.
         //   In fact. TypeSignature should become the IR counterpart to DataType from the AST.
-        if (base.equalsIgnoreCase(TIMESTAMP_WITH_TIME_ZONE)) {
+        if (TIMESTAMP_WITH_TIME_ZONE.equalsIgnoreCase(base)) {
             return format("timestamp(%s) with time zone", parameters.get(0));
         }
 
-        if (base.equalsIgnoreCase(TIMESTAMP_WITHOUT_TIME_ZONE)) {
+        if (TIMESTAMP_WITHOUT_TIME_ZONE.equalsIgnoreCase(base)) {
             return format("timestamp(%s) without time zone", parameters.get(0));
         }
 

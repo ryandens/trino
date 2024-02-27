@@ -579,7 +579,7 @@ public final class DateTimes
         int hour = Integer.parseInt(matcher.group("hour"));
         int minute = Integer.parseInt(matcher.group("minute"));
         int second = matcher.group("second") == null ? 0 : Integer.parseInt(matcher.group("second"));
-        int offsetSign = matcher.group("sign").equals("+") ? 1 : -1;
+        int offsetSign = "+".equals(matcher.group("sign")) ? 1 : -1;
         int offsetHour = Integer.parseInt(matcher.group("offsetHour"));
         int offsetMinute = Integer.parseInt(matcher.group("offsetMinute"));
 
@@ -609,7 +609,7 @@ public final class DateTimes
         int hour = Integer.parseInt(matcher.group("hour"));
         int minute = Integer.parseInt(matcher.group("minute"));
         int second = matcher.group("second") == null ? 0 : Integer.parseInt(matcher.group("second"));
-        int offsetSign = matcher.group("sign").equals("+") ? 1 : -1;
+        int offsetSign = "+".equals(matcher.group("sign")) ? 1 : -1;
         int offsetHour = Integer.parseInt(matcher.group("offsetHour"));
         int offsetMinute = Integer.parseInt(matcher.group("offsetMinute"));
 

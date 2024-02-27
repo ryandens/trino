@@ -198,7 +198,7 @@ public final class Location
     {
         // todo should this only be allowed for file locations?
         verifyValidFileLocation();
-        checkState(!path.isEmpty() && !path.equals("/"), "root location does not have parent: %s", location);
+        checkState(!path.isEmpty() && !"/".equals(path), "root location does not have parent: %s", location);
 
         int lastIndexOfSlash = path.lastIndexOf('/');
         if (lastIndexOfSlash < 0) {
@@ -238,7 +238,7 @@ public final class Location
         if (path.endsWith("/")) {
             return withPath(location.substring(0, location.length() - 1), path.substring(0, path.length() - 1));
         }
-        if (path.equals("") && location.endsWith("/")) {
+        if ("".equals(path) && location.endsWith("/")) {
             return withPath(location.substring(0, location.length() - 1), "");
         }
         return this;
@@ -284,7 +284,7 @@ public final class Location
     {
         // TODO: should this be IOException?
         // file path must not be empty
-        checkState(!path.isEmpty() && !path.equals("/"), "File location must contain a path: %s", location);
+        checkState(!path.isEmpty() && !"/".equals(path), "File location must contain a path: %s", location);
         // file path cannot end with a slash
         checkState(!path.endsWith("/"), "File location cannot end with '/': %s", location);
     }

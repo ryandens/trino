@@ -296,8 +296,8 @@ public class DefaultJdbcMetadata
             Set<JdbcColumnHandle> newPhysicalColumns = newColumns.stream()
                     // It may happen fresh table handle comes with a columns prepared already.
                     // In such case it may happen that applyProjection may want to add merge/delete row id, which is created later during the planning.
-                    .filter(column -> !column.getColumnName().equals(MERGE_ROW_ID))
-                    .filter(column -> !column.getColumnName().equals(DELETE_ROW_ID))
+                    .filter(column -> !MERGE_ROW_ID.equals(column.getColumnName()))
+                    .filter(column -> !DELETE_ROW_ID.equals(column.getColumnName()))
                     .collect(toImmutableSet());
             verify(tableColumnSet.containsAll(newPhysicalColumns), "applyProjection called with columns %s and some are not available in existing query: %s", newPhysicalColumns, tableColumnSet);
         }

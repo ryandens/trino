@@ -144,7 +144,7 @@ public class KinesisSplitManager
                 DescribeStreamResult describeStreamResult = clientManager.getClient().describeStream(describeStreamRequest);
 
                 String streamStatus = describeStreamResult.getStreamDescription().getStreamStatus();
-                if (!streamStatus.equals("ACTIVE") && !streamStatus.equals("UPDATING")) {
+                if (!"ACTIVE".equals(streamStatus) && !"UPDATING".equals(streamStatus)) {
                     throw new ResourceNotFoundException("Stream not Active");
                 }
 

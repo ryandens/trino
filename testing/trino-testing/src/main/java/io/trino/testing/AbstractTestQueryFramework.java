@@ -695,7 +695,7 @@ public abstract class AbstractTestQueryFramework
                 .getQueryStats()
                 .getOperatorSummaries()
                 .stream()
-                .filter(summary -> nodeId.equals(summary.getPlanNodeId()) && summary.getOperatorType().equals("ScanFilterAndProjectOperator"))
+                .filter(summary -> nodeId.equals(summary.getPlanNodeId()) && "ScanFilterAndProjectOperator".equals(summary.getOperatorType()))
                 .collect(MoreCollectors.onlyElement());
     }
 

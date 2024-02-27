@@ -370,11 +370,11 @@ public class CheckpointWriter
                 writeLong(fieldBuilders.get(internalFieldId), statsType, internalFieldId, "numRecords", stats.getNumRecords().orElse(null));
                 internalFieldId++;
 
-                if (statsType.getFields().stream().anyMatch(field -> field.getName().orElseThrow().equals("minValues"))) {
+                if (statsType.getFields().stream().anyMatch(field -> "minValues".equals(field.getName().orElseThrow()))) {
                     writeMinMaxMapAsFields(fieldBuilders.get(internalFieldId), statsType, internalFieldId, "minValues", stats.getMinValues(), true);
                     internalFieldId++;
                 }
-                if (statsType.getFields().stream().anyMatch(field -> field.getName().orElseThrow().equals("maxValues"))) {
+                if (statsType.getFields().stream().anyMatch(field -> "maxValues".equals(field.getName().orElseThrow()))) {
                     writeMinMaxMapAsFields(fieldBuilders.get(internalFieldId), statsType, internalFieldId, "maxValues", stats.getMaxValues(), true);
                     internalFieldId++;
                 }

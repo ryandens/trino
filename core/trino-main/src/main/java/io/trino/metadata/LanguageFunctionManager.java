@@ -207,7 +207,7 @@ public class LanguageFunctionManager
 
     public static boolean isInlineFunction(CatalogSchemaFunctionName functionName)
     {
-        return functionName.getCatalogName().equals(GlobalSystemConnector.NAME) && functionName.getSchemaName().equals(QUERY_LOCAL_SCHEMA);
+        return functionName.getCatalogName().equals(GlobalSystemConnector.NAME) && QUERY_LOCAL_SCHEMA.equals(functionName.getSchemaName());
     }
 
     public static boolean isTrinoSqlLanguageFunction(FunctionId functionId)

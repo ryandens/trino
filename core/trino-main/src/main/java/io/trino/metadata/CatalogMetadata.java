@@ -128,7 +128,7 @@ public class CatalogMetadata
 
     public CatalogHandle getConnectorHandleForSchema(CatalogSchemaName schema)
     {
-        if (schema.getSchemaName().equals(INFORMATION_SCHEMA_NAME)) {
+        if (INFORMATION_SCHEMA_NAME.equals(schema.getSchemaName())) {
             return informationSchemaTransaction.getCatalogHandle();
         }
         return catalogTransaction.getCatalogHandle();
@@ -136,7 +136,7 @@ public class CatalogMetadata
 
     public CatalogHandle getCatalogHandle(Session session, QualifiedObjectName table)
     {
-        if (table.getSchemaName().equals(INFORMATION_SCHEMA_NAME)) {
+        if (INFORMATION_SCHEMA_NAME.equals(table.getSchemaName())) {
             return informationSchemaTransaction.getCatalogHandle();
         }
 

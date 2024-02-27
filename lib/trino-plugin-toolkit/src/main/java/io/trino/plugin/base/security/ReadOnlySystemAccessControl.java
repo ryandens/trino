@@ -171,7 +171,7 @@ public class ReadOnlySystemAccessControl
 
     private static boolean isSystemBuiltinSchema(CatalogSchemaRoutineName functionName)
     {
-        return functionName.getCatalogName().equals("system") && functionName.getSchemaName().equals("builtin");
+        return "system".equals(functionName.getCatalogName()) && "builtin".equals(functionName.getSchemaName());
     }
 
     @Override

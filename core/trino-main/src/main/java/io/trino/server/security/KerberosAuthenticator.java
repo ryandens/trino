@@ -136,7 +136,7 @@ public class KerberosAuthenticator
         Principal principal = null;
         if (header != null) {
             String[] parts = header.split("\\s+");
-            if (parts.length == 2 && parts[0].equals(NEGOTIATE_SCHEME)) {
+            if (parts.length == 2 && NEGOTIATE_SCHEME.equals(parts[0])) {
                 try {
                     requestSpnegoToken = parts[1];
                     principal = authenticate(parts[1]).orElse(null);

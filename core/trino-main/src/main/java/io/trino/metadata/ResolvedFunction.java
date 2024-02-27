@@ -278,12 +278,12 @@ public class ResolvedFunction
             List<String> parts = name.getParts();
             return parts.size() == 3 &&
                     parts.get(0).equals(GlobalSystemConnector.NAME) &&
-                    parts.get(1).equals(SCHEMA);
+                    SCHEMA.equals(parts.get(1));
         }
 
         public static boolean isSerializedResolvedFunction(CatalogSchemaFunctionName name)
         {
-            return name.getCatalogName().equals(GlobalSystemConnector.NAME) && name.getSchemaName().equals(SCHEMA);
+            return name.getCatalogName().equals(GlobalSystemConnector.NAME) && SCHEMA.equals(name.getSchemaName());
         }
 
         public static SerializedResolvedFunction fromSerializedName(QualifiedName qualifiedName)

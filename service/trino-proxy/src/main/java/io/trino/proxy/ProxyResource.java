@@ -192,12 +192,12 @@ public class ProxyResource
         setupBearerToken(servletRequest, requestBuilder);
 
         for (String name : list(servletRequest.getHeaderNames())) {
-            if (isTrinoHeader(name) || name.equalsIgnoreCase(COOKIE)) {
+            if (isTrinoHeader(name) || COOKIE.equalsIgnoreCase(name)) {
                 for (String value : list(servletRequest.getHeaders(name))) {
                     requestBuilder.addHeader(name, value);
                 }
             }
-            else if (name.equalsIgnoreCase(USER_AGENT)) {
+            else if (USER_AGENT.equalsIgnoreCase(name)) {
                 for (String value : list(servletRequest.getHeaders(name))) {
                     requestBuilder.addHeader(name, "[Trino Proxy] " + value);
                 }
@@ -286,7 +286,7 @@ public class ProxyResource
     {
         response.getHeaders().forEach((headerName, value) -> {
             String name = headerName.toString();
-            if (isTrinoHeader(name) || name.equalsIgnoreCase(SET_COOKIE)) {
+            if (isTrinoHeader(name) || SET_COOKIE.equalsIgnoreCase(name)) {
                 builder.header(name, value);
             }
         });

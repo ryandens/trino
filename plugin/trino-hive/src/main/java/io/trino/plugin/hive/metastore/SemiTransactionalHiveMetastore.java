@@ -1433,25 +1433,25 @@ public class SemiTransactionalHiveMetastore
         long duration = parseLong(matcher.group(1));
         String unit = matcher.group(2).toLowerCase(ENGLISH);
 
-        if (unit.equals("s") || unit.startsWith("sec")) {
+        if ("s".equals(unit) || unit.startsWith("sec")) {
             return SECONDS.toMillis(duration);
         }
-        if (unit.equals("ms") || unit.startsWith("msec")) {
+        if ("ms".equals(unit) || unit.startsWith("msec")) {
             return duration;
         }
-        if (unit.equals("m") || unit.startsWith("min")) {
+        if ("m".equals(unit) || unit.startsWith("min")) {
             return MINUTES.toMillis(duration);
         }
-        if (unit.equals("us") || unit.startsWith("usec")) {
+        if ("us".equals(unit) || unit.startsWith("usec")) {
             return MICROSECONDS.toMillis(duration);
         }
-        if (unit.equals("ns") || unit.startsWith("nsec")) {
+        if ("ns".equals(unit) || unit.startsWith("nsec")) {
             return NANOSECONDS.toMillis(duration);
         }
-        if (unit.equals("h") || unit.startsWith("hour")) {
+        if ("h".equals(unit) || unit.startsWith("hour")) {
             return HOURS.toMillis(duration);
         }
-        if (unit.equals("d") || unit.startsWith("day")) {
+        if ("d".equals(unit) || unit.startsWith("day")) {
             return DAYS.toMillis(duration);
         }
         throw new IllegalArgumentException("Invalid time unit " + unit);

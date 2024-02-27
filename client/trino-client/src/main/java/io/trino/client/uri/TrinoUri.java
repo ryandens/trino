@@ -280,7 +280,7 @@ public class TrinoUri
         properties = buildProperties();
 
         // enable SSL by default for the trino schema and the standard port
-        useSecureConnection = SSL.getValue(properties).orElse(uri.getScheme().equals("https") || (uri.getScheme().equals("trino") && uri.getPort() == 443));
+        useSecureConnection = SSL.getValue(properties).orElse("https".equals(uri.getScheme()) || ("trino".equals(uri.getScheme()) && uri.getPort() == 443));
         if (!password.orElse("").isEmpty()) {
             if (!useSecureConnection) {
                 throw new SQLException("TLS/SSL required for authentication with username and password");
@@ -424,7 +424,7 @@ public class TrinoUri
         this.explicitPrepare = EXPLICIT_PREPARE.getValue(properties);
 
         // enable SSL by default for the trino schema and the standard port
-        useSecureConnection = ssl.orElse(uri.getScheme().equals("https") || (uri.getScheme().equals("trino") && uri.getPort() == 443));
+        useSecureConnection = ssl.orElse("https".equals(uri.getScheme()) || ("trino".equals(uri.getScheme()) && uri.getPort() == 443));
         address = HostAndPort.fromParts(uri.getHost(), uri.getPort() == -1 ? (useSecureConnection ? 443 : 80) : uri.getPort());
 
         initCatalogAndSchema();
@@ -781,7 +781,7 @@ public class TrinoUri
             throw new SQLException("Invalid Trino URL: " + url);
         }
 
-        if (url.equals(URL_START)) {
+        if (URL_START.equals(url)) {
             throw new SQLException("Empty Trino URL: " + url);
         }
     }
@@ -801,7 +801,7 @@ public class TrinoUri
             throws SQLException
     {
         String path = uri.getPath();
-        if (isNullOrEmpty(uri.getPath()) || path.equals("/")) {
+        if (isNullOrEmpty(uri.getPath()) || "/".equals(path)) {
             return;
         }
 

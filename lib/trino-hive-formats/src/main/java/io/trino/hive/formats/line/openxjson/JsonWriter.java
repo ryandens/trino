@@ -155,10 +155,10 @@ final class JsonWriter
     {
         // canonicalize unquoted values
         // boolean to lower case
-        if (value.equalsIgnoreCase("true")) {
+        if ("true".equalsIgnoreCase(value)) {
             return "true";
         }
-        if (value.equalsIgnoreCase("false")) {
+        if ("false".equalsIgnoreCase(value)) {
             return "false";
         }
 

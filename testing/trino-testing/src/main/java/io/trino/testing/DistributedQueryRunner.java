@@ -676,7 +676,7 @@ public class DistributedQueryRunner
         {
             this.defaultSession = requireNonNull(defaultSession, "defaultSession is null");
             String tracingEnabled = firstNonNull(getenv("TESTS_TRACING_ENABLED"), "false");
-            this.withTracing = parseBoolean(tracingEnabled) || tracingEnabled.equals("1");
+            this.withTracing = parseBoolean(tracingEnabled) || "1".equals(tracingEnabled);
         }
 
         @CanIgnoreReturnValue

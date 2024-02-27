@@ -243,7 +243,7 @@ public class SqlRoutineAnalyzer
     private static void validateLanguage(FunctionSpecification function)
     {
         Optional<String> language = getLanguage(function);
-        if (language.isPresent() && !language.get().equalsIgnoreCase("sql")) {
+        if (language.isPresent() && !"sql".equalsIgnoreCase(language.get())) {
             throw semanticException(NOT_SUPPORTED, function, "Unsupported language: %s", language.get());
         }
     }

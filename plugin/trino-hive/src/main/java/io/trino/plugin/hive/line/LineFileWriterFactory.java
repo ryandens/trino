@@ -144,10 +144,10 @@ public abstract class LineFileWriterFactory
             throws IOException
     {
         String skipHeaderCount = schema.getOrDefault(SKIP_HEADER_COUNT_KEY, "0");
-        if (skipHeaderCount.equals("0")) {
+        if ("0".equals(skipHeaderCount)) {
             return Optional.empty();
         }
-        if (!skipHeaderCount.equals("1") && !headerSupported) {
+        if (!"1".equals(skipHeaderCount) && !headerSupported) {
             throw new TrinoException(HIVE_UNSUPPORTED_FORMAT, "%s=%s not supported".formatted(SKIP_HEADER_COUNT_KEY, skipHeaderCount));
         }
 

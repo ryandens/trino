@@ -462,7 +462,7 @@ public class PinotClient
         }
         catch (Exception e) {
             String[] errorMessageSplits = e.getMessage().split(" ");
-            if (errorMessageSplits.length >= 4 && errorMessageSplits[3].equalsIgnoreCase(TIME_BOUNDARY_NOT_FOUND_ERROR_CODE)) {
+            if (errorMessageSplits.length >= 4 && TIME_BOUNDARY_NOT_FOUND_ERROR_CODE.equalsIgnoreCase(errorMessageSplits[3])) {
                 return timeBoundaryJsonCodec.fromJson("{}");
             }
             throw e;

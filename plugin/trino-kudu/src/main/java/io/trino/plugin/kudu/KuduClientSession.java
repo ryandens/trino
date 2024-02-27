@@ -133,7 +133,7 @@ public class KuduClientSession
         String prefix = schemaEmulation.getPrefixForTablesOfSchema(schemaName);
 
         List<String> tables = internalListTables(prefix);
-        if (schemaName.equals(DEFAULT_SCHEMA)) {
+        if (DEFAULT_SCHEMA.equals(schemaName)) {
             tables = schemaEmulation.filterTablesForDefaultSchema(tables);
         }
         return tables.stream()

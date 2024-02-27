@@ -214,7 +214,7 @@ public class GlobalFunctionCatalog
 
     public static boolean isBuiltinFunctionName(CatalogSchemaFunctionName functionName)
     {
-        return functionName.getCatalogName().equals(GlobalSystemConnector.NAME) && functionName.getSchemaName().equals(BUILTIN_SCHEMA);
+        return functionName.getCatalogName().equals(GlobalSystemConnector.NAME) && BUILTIN_SCHEMA.equals(functionName.getSchemaName());
     }
 
     public static CatalogSchemaFunctionName builtinFunctionName(OperatorType operatorType)

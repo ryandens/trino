@@ -287,7 +287,7 @@ public class Console
                 StatementSplitter splitter = new StatementSplitter(line, STATEMENT_DELIMITERS);
                 for (Statement split : splitter.getCompleteStatements()) {
                     OutputFormat currentOutputFormat = outputFormat;
-                    if (split.terminator().equals("\\G")) {
+                    if ("\\G".equals(split.terminator())) {
                         currentOutputFormat = OutputFormat.VERTICAL;
                     }
 

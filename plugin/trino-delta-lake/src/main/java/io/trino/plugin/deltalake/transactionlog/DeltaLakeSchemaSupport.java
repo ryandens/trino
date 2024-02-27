@@ -250,7 +250,7 @@ public final class DeltaLakeSchemaSupport
         }
         if (metadata != null) {
             metadata.entrySet().stream()
-                    .filter(entry -> !entry.getKey().equals("comment"))
+                    .filter(entry -> !"comment".equals(entry.getKey()))
                     .forEach(entry -> columnMetadata.put(entry.getKey(), entry.getValue()));
         }
         fieldContents.put("metadata", columnMetadata.buildOrThrow());

@@ -58,7 +58,7 @@ public final class FilterUtil
 
     public static boolean isImpossibleObjectName(String candidate)
     {
-        return candidate.equals("") ||
+        return "".equals(candidate) ||
                 // TODO (https://github.com/trinodb/trino/issues/17) Currently all object names are lowercase in Trino
                 !candidate.equals(candidate.toLowerCase(ENGLISH));
     }

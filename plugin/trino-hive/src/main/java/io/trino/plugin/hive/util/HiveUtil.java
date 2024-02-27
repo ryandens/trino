@@ -375,10 +375,10 @@ public final class HiveUtil
 
     private static boolean booleanPartitionKey(String value, String name)
     {
-        if (value.equalsIgnoreCase("true")) {
+        if ("true".equalsIgnoreCase(value)) {
             return true;
         }
-        if (value.equalsIgnoreCase("false")) {
+        if ("false".equalsIgnoreCase(value)) {
             return false;
         }
         throw new TrinoException(HIVE_INVALID_PARTITION_VALUE, format("Invalid partition value '%s' for BOOLEAN partition key: %s", value, name));
@@ -850,7 +850,7 @@ public final class HiveUtil
         List<Column> tableColumns = table.getDataColumns();
         ImmutableMap.Builder<String, Optional<String>> builder = ImmutableMap.builder();
         for (Column field : concat(tableColumns, table.getPartitionColumns())) {
-            if (field.getComment().isPresent() && !field.getComment().get().equals("from deserializer")) {
+            if (field.getComment().isPresent() && !"from deserializer".equals(field.getComment().get())) {
                 builder.put(field.getName(), field.getComment());
             }
             else {

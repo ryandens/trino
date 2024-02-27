@@ -79,7 +79,7 @@ public class HdfsConfig
 
     public Optional<FsPermission> getNewDirectoryFsPermissions()
     {
-        if (newDirectoryPermissions.equalsIgnoreCase(HdfsConfig.SKIP_DIR_PERMISSIONS)) {
+        if (HdfsConfig.SKIP_DIR_PERMISSIONS.equalsIgnoreCase(newDirectoryPermissions)) {
             return Optional.empty();
         }
         return Optional.of(FsPermission.createImmutable(Shorts.checkedCast(parseUnsignedInt(newDirectoryPermissions, 8))));

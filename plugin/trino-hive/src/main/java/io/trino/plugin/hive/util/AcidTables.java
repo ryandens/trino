@@ -277,7 +277,7 @@ public final class AcidTables
             fileName = fileName.substring(0, visibility);
         }
 
-        boolean deleteDelta = deltaPrefix.equals("delete_delta_");
+        boolean deleteDelta = "delete_delta_".equals(deltaPrefix);
 
         String rest = fileName.substring(deltaPrefix.length());
         int split = rest.indexOf('_');

@@ -49,13 +49,13 @@ public class TrinoVerifierModule
     private static void bindEventClientClasses(Set<String> eventClientTypes, Binder binder, Multibinder<EventClient> multibinder)
     {
         for (String eventClientType : eventClientTypes) {
-            if (eventClientType.equals("human-readable")) {
+            if ("human-readable".equals(eventClientType)) {
                 multibinder.addBinding().to(HumanReadableEventClient.class).in(Scopes.SINGLETON);
             }
-            else if (eventClientType.equals("file")) {
+            else if ("file".equals(eventClientType)) {
                 multibinder.addBinding().to(JsonEventClient.class).in(Scopes.SINGLETON);
             }
-            else if (eventClientType.equals("database")) {
+            else if ("database".equals(eventClientType)) {
                 jsonCodecBinder(binder).bindListJsonCodec(String.class);
                 binder.bind(VerifierQueryEventDao.class).toProvider(VerifierQueryEventDaoProvider.class);
                 multibinder.addBinding().to(DatabaseEventClient.class).in(Scopes.SINGLETON);

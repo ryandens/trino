@@ -85,7 +85,7 @@ public final class TrinoDriverUri
             throw new SQLException("Invalid JDBC URL: " + url);
         }
 
-        if (url.equals(JDBC_URL_START)) {
+        if (JDBC_URL_START.equals(url)) {
             throw new SQLException("Empty JDBC URL: " + url);
         }
     }

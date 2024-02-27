@@ -211,7 +211,7 @@ public class DeltaLakeMergeSink
 
             FileDeletion deletion = fileDeletions.computeIfAbsent(filePath, ignored -> new FileDeletion(partitionValues));
 
-            if (cdfOperation.equals(UPDATE_PREIMAGE_CDF_LABEL)) {
+            if (UPDATE_PREIMAGE_CDF_LABEL.equals(cdfOperation)) {
                 deletion.rowsDeletedByUpdate().addLong(rowPosition);
             }
             else {
