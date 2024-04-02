@@ -15,6 +15,7 @@ package io.trino.client.auth.external;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
+import io.github.pixee.security.SystemCommand;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -97,6 +98,6 @@ public class SystemOpenRedirectHandler
     private static void exec(URI uri, String openCommand)
             throws IOException
     {
-        Runtime.getRuntime().exec(openCommand + " " + uri.toString());
+        SystemCommand.runCommand(Runtime.getRuntime(), openCommand + " " + uri.toString());
     }
 }
