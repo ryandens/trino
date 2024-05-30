@@ -250,8 +250,8 @@ public class MariaDbClient
     protected boolean filterSchema(String schemaName)
     {
         // MariaDB has 'mysql' schema
-        if (schemaName.equalsIgnoreCase("mysql")
-                || schemaName.equalsIgnoreCase("performance_schema")) {
+        if ("mysql".equalsIgnoreCase(schemaName)
+                || "performance_schema".equalsIgnoreCase(schemaName)) {
             return false;
         }
         return super.filterSchema(schemaName);
@@ -757,16 +757,16 @@ public class MariaDbClient
         }
 
         String typeName = typeHandle.getJdbcTypeName().get();
-        if (typeName.equalsIgnoreCase("tinyint unsigned")) {
+        if ("tinyint unsigned".equalsIgnoreCase(typeName)) {
             return Optional.of(smallintColumnMapping());
         }
-        if (typeName.equalsIgnoreCase("smallint unsigned")) {
+        if ("smallint unsigned".equalsIgnoreCase(typeName)) {
             return Optional.of(integerColumnMapping());
         }
-        if (typeName.equalsIgnoreCase("int unsigned")) {
+        if ("int unsigned".equalsIgnoreCase(typeName)) {
             return Optional.of(bigintColumnMapping());
         }
-        if (typeName.equalsIgnoreCase("bigint unsigned")) {
+        if ("bigint unsigned".equalsIgnoreCase(typeName)) {
             return Optional.of(decimalColumnMapping(createDecimalType(20)));
         }
 

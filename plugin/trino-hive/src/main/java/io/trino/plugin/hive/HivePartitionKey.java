@@ -40,7 +40,7 @@ public final class HivePartitionKey
         requireNonNull(value, "value is null");
 
         this.name = name;
-        this.value = value.equals(HIVE_DEFAULT_DYNAMIC_PARTITION) ? "\\N" : value;
+        this.value = HIVE_DEFAULT_DYNAMIC_PARTITION.equals(value) ? "\\N" : value;
     }
 
     @JsonProperty

@@ -26,7 +26,7 @@ public class DisabledWebUiAuthenticationFilter
     public void filter(ContainerRequestContext request)
     {
         String path = request.getUriInfo().getRequestUri().getPath();
-        if (path.equals("/")) {
+        if ("/".equals(path)) {
             request.abortWith(Response.seeOther(DISABLED_LOCATION_URI).build());
             return;
         }

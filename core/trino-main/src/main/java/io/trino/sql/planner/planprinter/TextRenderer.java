@@ -68,7 +68,7 @@ public class TextRenderer
         output.append(indent.nodeIndent())
                 .append(node.getName())
                 .append(node.getDescriptor().entrySet().stream()
-                        .filter(entry -> !(entry.getValue().isEmpty() || entry.getValue().equals("[]")))
+                        .filter(entry -> !(entry.getValue().isEmpty() || "[]".equals(entry.getValue())))
                         .map(entry -> entry.getKey() + " = " + entry.getValue())
                         .collect(joining(", ", "[", "]")))
                 .append("\n");

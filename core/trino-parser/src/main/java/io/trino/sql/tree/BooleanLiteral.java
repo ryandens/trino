@@ -42,9 +42,9 @@ public class BooleanLiteral
     {
         super(location);
         requireNonNull(value, "value is null");
-        checkArgument(value.toLowerCase(ENGLISH).equals("true") || value.toLowerCase(ENGLISH).equals("false"));
+        checkArgument("true".equals(value.toLowerCase(ENGLISH)) || "false".equals(value.toLowerCase(ENGLISH)));
 
-        this.value = value.toLowerCase(ENGLISH).equals("true");
+        this.value = "true".equals(value.toLowerCase(ENGLISH));
     }
 
     public boolean getValue()

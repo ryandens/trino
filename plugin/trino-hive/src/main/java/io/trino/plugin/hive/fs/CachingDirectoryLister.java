@@ -76,14 +76,14 @@ public class CachingDirectoryLister
 
     private static SchemaTablePrefix parseTableName(String tableName)
     {
-        if (tableName.equals("*")) {
+        if ("*".equals(tableName)) {
             return new SchemaTablePrefix();
         }
         String[] parts = tableName.split("\\.");
         checkArgument(parts.length == 2, "Invalid schemaTableName: %s", tableName);
         String schema = parts[0];
         String table = parts[1];
-        if (table.equals("*")) {
+        if ("*".equals(table)) {
             return new SchemaTablePrefix(schema);
         }
         return new SchemaTablePrefix(schema, table);

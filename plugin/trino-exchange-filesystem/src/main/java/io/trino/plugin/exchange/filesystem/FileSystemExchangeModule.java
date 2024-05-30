@@ -53,7 +53,7 @@ public class FileSystemExchangeModule
             return;
         }
         String scheme = baseDirectories.get(0).getScheme();
-        if (scheme == null || scheme.equals("file")) {
+        if (scheme == null || "file".equals(scheme)) {
             binder.bind(FileSystemExchangeStorage.class).to(LocalFileSystemExchangeStorage.class).in(Scopes.SINGLETON);
         }
         else if (ImmutableSet.of("s3", "gs").contains(scheme)) {
@@ -61,7 +61,7 @@ public class FileSystemExchangeModule
             newExporter(binder).export(S3FileSystemExchangeStorageStats.class).withGeneratedName();
             binder.bind(FileSystemExchangeStorage.class).to(S3FileSystemExchangeStorage.class).in(Scopes.SINGLETON);
             configBinder(binder).bindConfig(ExchangeS3Config.class);
-            S3FileSystemExchangeStorage.CompatibilityMode compatibilityMode = scheme.equals("gs") ? GCP : AWS;
+            S3FileSystemExchangeStorage.CompatibilityMode compatibilityMode = "gs".equals(scheme) ? GCP : AWS;
             binder.bind(S3FileSystemExchangeStorage.CompatibilityMode.class).toInstance(compatibilityMode);
         }
         else if (ImmutableSet.of("abfs", "abfss").contains(scheme)) {

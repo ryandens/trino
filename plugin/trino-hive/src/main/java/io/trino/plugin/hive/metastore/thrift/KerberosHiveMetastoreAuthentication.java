@@ -85,7 +85,7 @@ public class KerberosHiveMetastoreAuthentication
             else {
                 String[] names = hiveMetastoreServicePrincipal.split("[/@]");
                 checkArgument(names.length == 3, "Kerberos principal name does not have the expected hostname part: %s", hiveMetastoreServicePrincipal);
-                if (names[1].equals("_HOST")) {
+                if ("_HOST".equals(names[1])) {
                     names[1] = hiveMetastoreHost.toLowerCase(ENGLISH);
                 }
 

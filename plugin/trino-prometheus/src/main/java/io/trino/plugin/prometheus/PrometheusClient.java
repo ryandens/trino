@@ -95,7 +95,7 @@ public class PrometheusClient
     {
         requireNonNull(schema, "schema is null");
         String status = "";
-        if (schema.equals("default")) {
+        if ("default".equals(schema)) {
             status = (String) tableSupplier.get().get("status");
             //TODO prometheus warnings (success|error|warning) could be handled separately
             if (status.equals("success")) {
@@ -114,7 +114,7 @@ public class PrometheusClient
     {
         requireNonNull(schema, "schema is null");
         requireNonNull(tableName, "tableName is null");
-        if (!schema.equals("default")) {
+        if (!"default".equals(schema)) {
             return null;
         }
 

@@ -25,10 +25,10 @@ public record ProtectMode(boolean offline, boolean readOnly)
         boolean readOnly = false;
 
         for (String token : Splitter.on(",").split(value)) {
-            if (token.equalsIgnoreCase("OFFLINE")) {
+            if ("OFFLINE".equalsIgnoreCase(token)) {
                 offline = true;
             }
-            else if (token.equalsIgnoreCase("READ_ONLY")) {
+            else if ("READ_ONLY".equalsIgnoreCase(token)) {
                 readOnly = true;
             }
         }

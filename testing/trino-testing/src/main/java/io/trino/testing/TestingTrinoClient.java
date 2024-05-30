@@ -325,23 +325,23 @@ public class TestingTrinoClient
                     .collect(toList()); // nullable
             return dataToRow(fieldTypes).apply(fieldValues);
         }
-        if (type.getBaseName().equals("HyperLogLog")) {
+        if ("HyperLogLog".equals(type.getBaseName())) {
             //noinspection RedundantCast
             return (byte[]) value;
         }
-        if (type.getBaseName().equals("Geometry")) {
+        if ("Geometry".equals(type.getBaseName())) {
             //noinspection RedundantCast
             return (String) value;
         }
-        if (type.getBaseName().equals("SphericalGeography")) {
+        if ("SphericalGeography".equals(type.getBaseName())) {
             //noinspection RedundantCast
             return (String) value;
         }
-        if (type.getBaseName().equals("ObjectId")) {
+        if ("ObjectId".equals(type.getBaseName())) {
             //noinspection RedundantCast
             return (byte[]) value;
         }
-        if (type.getBaseName().equals("Bogus")) {
+        if ("Bogus".equals(type.getBaseName())) {
             //noinspection RedundantCast
             return (int) value;
         }

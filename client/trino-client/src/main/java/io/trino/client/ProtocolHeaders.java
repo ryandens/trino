@@ -264,7 +264,7 @@ public final class ProtocolHeaders
         requireNonNull(alternateHeaderName, "alternateHeaderName is null");
         requireNonNull(headerNames, "headerNames is null");
 
-        if (alternateHeaderName.isPresent() && !alternateHeaderName.get().equalsIgnoreCase("Trino")) {
+        if (alternateHeaderName.isPresent() && !"Trino".equalsIgnoreCase(alternateHeaderName.get())) {
             String headerPrefix = "x-" + alternateHeaderName.get().toLowerCase(ENGLISH);
             if (headerNames.stream().anyMatch(header -> header.toLowerCase(ENGLISH).startsWith(headerPrefix))) {
                 if (headerNames.stream().anyMatch(header -> header.toLowerCase(ENGLISH).startsWith("x-trino-"))) {

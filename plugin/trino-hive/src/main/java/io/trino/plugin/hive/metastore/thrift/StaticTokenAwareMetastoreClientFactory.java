@@ -144,7 +144,7 @@ public class StaticTokenAwareMetastoreClientFactory
         requireNonNull(uri, "uri is null");
         String scheme = uri.getScheme();
         checkArgument(!isNullOrEmpty(scheme), "metastoreUri scheme is missing: %s", uri);
-        checkArgument(scheme.equals("thrift"), "metastoreUri scheme must be thrift: %s", uri);
+        checkArgument("thrift".equals(scheme), "metastoreUri scheme must be thrift: %s", uri);
         checkArgument(uri.getHost() != null, "metastoreUri host is missing: %s", uri);
         checkArgument(uri.getPort() != -1, "metastoreUri port is missing: %s", uri);
         return uri;

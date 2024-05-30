@@ -111,7 +111,7 @@ public final class VarcharToTimeWithTimeZoneCast
     private static int parseOffset(ConnectorSession session, Matcher matcher)
     {
         if (matcher.group("offsetHour") != null && matcher.group("offsetMinute") != null) {
-            int offsetSign = matcher.group("sign").equals("+") ? 1 : -1;
+            int offsetSign = "+".equals(matcher.group("sign")) ? 1 : -1;
             int offsetHour = Integer.parseInt(matcher.group("offsetHour"));
             int offsetMinute = Integer.parseInt(matcher.group("offsetMinute"));
 

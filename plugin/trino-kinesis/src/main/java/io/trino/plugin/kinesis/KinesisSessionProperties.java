@@ -134,7 +134,7 @@ public final class KinesisSessionProperties
     public static long getIteratorStartTimestamp(ConnectorSession session)
     {
         String value = session.getProperty(STARTING_TIMESTAMP, String.class);
-        if (value.equals(UNSET_TIMESTAMP)) {
+        if (UNSET_TIMESTAMP.equals(value)) {
             return 0;
         }
         return getTimestampAsMillis(value, session);

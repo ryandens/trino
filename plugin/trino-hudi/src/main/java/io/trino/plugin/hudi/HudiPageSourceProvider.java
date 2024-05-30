@@ -322,7 +322,7 @@ public class HudiPageSourceProvider
                 case TIMESTAMP:
                     return Optional.of(Timestamp.valueOf(partitionValue).toLocalDateTime().toEpochSecond(ZoneOffset.UTC) * 1_000);
                 case BOOLEAN:
-                    checkArgument(partitionValue.equalsIgnoreCase("true") || partitionValue.equalsIgnoreCase("false"));
+                    checkArgument("true".equalsIgnoreCase(partitionValue) || "false".equalsIgnoreCase(partitionValue));
                     return Optional.of(Boolean.valueOf(partitionValue));
                 case DECIMAL:
                     return Optional.of(Decimals.parse(partitionValue).getObject());

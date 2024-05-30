@@ -292,7 +292,7 @@ public final class ThriftMetastoreUtil
 
     public static boolean isRoleEnabled(ConnectorIdentity identity, Function<HivePrincipal, Set<RoleGrant>> listRoleGrants, String role)
     {
-        if (role.equals(PUBLIC_ROLE_NAME)) {
+        if (PUBLIC_ROLE_NAME.equals(role)) {
             return true;
         }
 
@@ -306,7 +306,7 @@ public final class ThriftMetastoreUtil
             return true;
         }
 
-        if (role.equals(ADMIN_ROLE_NAME)) {
+        if (ADMIN_ROLE_NAME.equals(role)) {
             // The admin role must be enabled explicitly, and so it should be checked above
             return false;
         }

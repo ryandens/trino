@@ -174,7 +174,7 @@ public abstract class BaseJdbcClient
 
     protected boolean filterSchema(String schemaName)
     {
-        return !schemaName.equalsIgnoreCase("information_schema");
+        return !"information_schema".equalsIgnoreCase(schemaName);
     }
 
     @Override
@@ -1503,8 +1503,8 @@ public abstract class BaseJdbcClient
         requireNonNull(name, "name is null");
         requireNonNull(escape, "escape is null");
         checkArgument(!escape.isEmpty(), "Escape string must not be empty");
-        checkArgument(!escape.equals("_"), "Escape string must not be '_'");
-        checkArgument(!escape.equals("%"), "Escape string must not be '%'");
+        checkArgument(!"_".equals(escape), "Escape string must not be '_'");
+        checkArgument(!"%".equals(escape), "Escape string must not be '%'");
         name = name.replace(escape, escape + escape);
         name = name.replace("_", escape + "_");
         name = name.replace("%", escape + "%");

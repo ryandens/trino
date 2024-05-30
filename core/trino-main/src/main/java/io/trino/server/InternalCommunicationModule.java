@@ -68,7 +68,7 @@ public class InternalCommunicationModule
 
         private static URI toIpEncodedAsHostnameUri(URI uri)
         {
-            if (!uri.getScheme().equals("https")) {
+            if (!"https".equals(uri.getScheme())) {
                 return uri;
             }
             try {

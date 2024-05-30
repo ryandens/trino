@@ -137,13 +137,13 @@ public enum TestingConnectorBehavior
         checkArgument(
                 !hasBehaviorByDefault ==
                         // TODO make these marked as expected by default
-                        (name().equals("SUPPORTS_CANCELLATION") ||
-                                name().equals("SUPPORTS_DYNAMIC_FILTER_PUSHDOWN") ||
-                                name().equals("SUPPORTS_JOIN_PUSHDOWN") ||
-                                name().equals("SUPPORTS_CREATE_OR_REPLACE_TABLE") ||
-                                name().equals("SUPPORTS_CREATE_FUNCTION") ||
-                                name().equals("SUPPORTS_REPORTING_WRITTEN_BYTES") ||
-                                name().equals("SUPPORTS_MULTI_STATEMENT_WRITES")),
+                        ("SUPPORTS_CANCELLATION".equals(name()) ||
+                                "SUPPORTS_DYNAMIC_FILTER_PUSHDOWN".equals(name()) ||
+                                "SUPPORTS_JOIN_PUSHDOWN".equals(name()) ||
+                                "SUPPORTS_CREATE_OR_REPLACE_TABLE".equals(name()) ||
+                                "SUPPORTS_CREATE_FUNCTION".equals(name()) ||
+                                "SUPPORTS_REPORTING_WRITTEN_BYTES".equals(name()) ||
+                                "SUPPORTS_MULTI_STATEMENT_WRITES".equals(name())),
                 "Every behavior should be expected to be true by default. Having mixed defaults makes reasoning about tests harder. False default provided for %s",
                 name());
     }

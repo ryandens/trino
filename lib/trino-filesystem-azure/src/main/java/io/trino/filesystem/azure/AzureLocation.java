@@ -67,7 +67,7 @@ class AzureLocation
         this.account = host.substring(0, accountSplit);
 
         // host must end with ".dfs.core.windows.net"
-        checkArgument(host.substring(accountSplit).equals(".dfs.core.windows.net"), INVALID_LOCATION_MESSAGE, location);
+        checkArgument(".dfs.core.windows.net".equals(host.substring(accountSplit)), INVALID_LOCATION_MESSAGE, location);
 
         // storage account is interpolated into URL host name, so perform extra checks
         checkArgument(STORAGE_ACCOUNT_VALID_CHARACTERS.matchesAllOf(account),

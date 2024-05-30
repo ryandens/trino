@@ -178,10 +178,10 @@ public final class TransactionLogParser
         Type type = column.getBaseType();
         try {
             if (type.equals(BOOLEAN)) {
-                if (valueString.equalsIgnoreCase("true")) {
+                if ("true".equalsIgnoreCase(valueString)) {
                     return true;
                 }
-                if (valueString.equalsIgnoreCase("false")) {
+                if ("false".equalsIgnoreCase(valueString)) {
                     return false;
                 }
             }

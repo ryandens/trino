@@ -191,7 +191,7 @@ public final class HiveFormatUtils
         DateTimeParser[] parsers = new DateTimeParser[timestampFormats.size()];
         for (int i = 0; i < timestampFormats.size(); ++i) {
             String formatString = timestampFormats.get(i);
-            if (formatString.equalsIgnoreCase(MILLIS_TIMESTAMP_FORMAT)) {
+            if (MILLIS_TIMESTAMP_FORMAT.equalsIgnoreCase(formatString)) {
                 // Use milliseconds parser if pattern matches our special-case millis pattern string
                 parsers[i] = new MillisDateFormatParser();
             }

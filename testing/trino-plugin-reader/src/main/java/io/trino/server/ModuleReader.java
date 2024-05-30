@@ -107,7 +107,7 @@ public class ModuleReader
         try {
             ZipFile zipFile = new ZipFile(serviceJar);
             return zipFile.stream()
-                    .filter(entry -> !entry.isDirectory() && entry.getName().equals("META-INF/services/io.trino.spi.Plugin"))
+                    .filter(entry -> !entry.isDirectory() && "META-INF/services/io.trino.spi.Plugin".equals(entry.getName()))
                     .findFirst()
                     .map(entry -> {
                         try (BufferedInputStream bis = new BufferedInputStream(zipFile.getInputStream(entry))) {

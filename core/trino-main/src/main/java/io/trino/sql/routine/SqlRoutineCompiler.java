@@ -135,7 +135,7 @@ public final class SqlRoutineCompiler
         Class<?> clazz = compileClass(routine);
 
         MethodHandle handle = stream(clazz.getMethods())
-                .filter(method -> method.getName().equals("run"))
+                .filter(method -> "run".equals(method.getName()))
                 .map(Reflection::methodHandle)
                 .collect(onlyElement());
 

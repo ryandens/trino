@@ -88,7 +88,7 @@ public class HiveHudiPartitionInfo
     @Override
     public boolean doesMatchPredicates()
     {
-        if (hivePartitionName.equals("")) {
+        if ("".equals(hivePartitionName)) {
             hivePartitionKeys = ImmutableList.of();
             return true;
         }

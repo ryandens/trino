@@ -374,7 +374,7 @@ public class DeltaLakeSplitManager
         // org.apache.hadoop.fs.azurebfs.AzureBlobFileSystem encodes the path as URL when opening files
         // https://issues.apache.org/jira/browse/HADOOP-18580
         Optional<String> scheme = tableLocation.scheme();
-        if (scheme.isPresent() && (scheme.get().equals("abfs") || scheme.get().equals("abfss"))) {
+        if (scheme.isPresent() && ("abfs".equals(scheme.get()) || "abfss".equals(scheme.get()))) {
             // Replace '+' with '%2B' beforehand. Otherwise, the character becomes a space ' ' by URL decode.
             path = URLDecoder.decode(path.replace("+", "%2B"), UTF_8);
         }

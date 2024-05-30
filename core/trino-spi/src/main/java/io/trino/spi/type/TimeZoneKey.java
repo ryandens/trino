@@ -254,7 +254,7 @@ public final class TimeZoneKey
 
     public static boolean isUtcZoneId(String zoneId)
     {
-        return normalizeZoneId(zoneId).equals("UTC");
+        return "UTC".equals(normalizeZoneId(zoneId));
     }
 
     private static String normalizeZoneId(String zoneId)
@@ -298,7 +298,7 @@ public final class TimeZoneKey
                     return "UTC";
                 }
 
-                if (prefix.equals("Etc/GMT")) {
+                if ("Etc/GMT".equals(prefix)) {
                     hour = -hour;
                 }
 

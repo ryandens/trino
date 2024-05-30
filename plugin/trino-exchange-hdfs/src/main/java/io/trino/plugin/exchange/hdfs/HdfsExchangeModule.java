@@ -48,7 +48,7 @@ public class HdfsExchangeModule
             return;
         }
         String scheme = baseDirectories.get(0).getScheme();
-        if (scheme.equalsIgnoreCase("hdfs")) {
+        if ("hdfs".equalsIgnoreCase(scheme)) {
             binder.bind(FileSystemExchangeStorage.class).to(HadoopFileSystemExchangeStorage.class).in(Scopes.SINGLETON);
             configBinder(binder).bindConfig(ExchangeHdfsConfig.class);
         }

@@ -238,7 +238,7 @@ public class InternalHiveSplitFactory
         // Hadoop FileSystem returns "localhost" as a default
         return blockLocation.getHosts().stream()
                 .map(HostAddress::fromString)
-                .filter(address -> !address.getHostText().equals("localhost"))
+                .filter(address -> !"localhost".equals(address.getHostText()))
                 .collect(toImmutableList());
     }
 

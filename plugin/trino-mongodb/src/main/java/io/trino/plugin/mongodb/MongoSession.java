@@ -841,7 +841,7 @@ public class MongoSession
         Document metadata = new Document(TABLE_NAME_KEY, remoteTableName);
 
         ArrayList<Document> fields = new ArrayList<>();
-        if (!columns.stream().anyMatch(c -> c.getBaseName().equals("_id"))) {
+        if (!columns.stream().anyMatch(c -> "_id".equals(c.getBaseName()))) {
             fields.add(new MongoColumnHandle("_id", ImmutableList.of(), OBJECT_ID, true, false, Optional.empty()).getDocument());
         }
 
@@ -893,7 +893,7 @@ public class MongoSession
                 metadata.append(FIELDS_NAME_KEY, key);
                 metadata.append(FIELDS_TYPE_KEY, fieldType.get().toString());
                 metadata.append(FIELDS_HIDDEN_KEY,
-                        key.equals("_id") && fieldType.get().equals(OBJECT_ID.getTypeSignature()));
+                        "_id".equals(key) && fieldType.get().equals(OBJECT_ID.getTypeSignature()));
 
                 builder.add(metadata);
             }

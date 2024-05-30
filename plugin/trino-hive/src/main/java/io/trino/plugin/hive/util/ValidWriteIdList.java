@@ -46,7 +46,7 @@ public final class ValidWriteIdList
         List<String> values = COLON_SPLITTER.splitToList(value);
         checkArgument(values.size() >= 3, "invalid write ID list: %s", value);
 
-        tableName = values.get(0).equalsIgnoreCase("null") ? null : values.get(0);
+        tableName = "null".equalsIgnoreCase(values.get(0)) ? null : values.get(0);
         highWatermark = parseLong(values.get(1));
         minOpenWriteId = parseLong(values.get(2));
 

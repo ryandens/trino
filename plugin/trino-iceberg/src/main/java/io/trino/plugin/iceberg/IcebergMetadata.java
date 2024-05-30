@@ -2949,7 +2949,7 @@ public class IcebergMetadata
 
         Iterable<String> tableToSnapshotIds = Splitter.on(',').split(dependsOnTables);
         for (String entry : tableToSnapshotIds) {
-            if (entry.equals(UNKNOWN_SNAPSHOT_TOKEN)) {
+            if (UNKNOWN_SNAPSHOT_TOKEN.equals(entry)) {
                 // This is a "federated" materialized view (spanning across connectors). Trust user's choice and assume "fresh or fresh enough".
                 hasUnknownTables = true;
                 firstTableChange = Optional.empty();

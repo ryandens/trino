@@ -46,7 +46,7 @@ public class Ciphers
 
     public static Slice serializeAesEncryptionKey(SecretKey key)
     {
-        checkArgument(key.getAlgorithm().equals("AES"), "unexpected algorithm: %s", key.getAlgorithm());
+        checkArgument("AES".equals(key.getAlgorithm()), "unexpected algorithm: %s", key.getAlgorithm());
         return Slices.wrappedBuffer(key.getEncoded());
     }
 
@@ -58,7 +58,7 @@ public class Ciphers
     public static boolean is256BitSecretKeySpec(SecretKey secretKey)
     {
         if (secretKey instanceof SecretKeySpec spec) {
-            return spec.getAlgorithm().equals("AES") && spec.getEncoded().length == AES_ENCRYPTION_KEY_BITS / 8;
+            return "AES".equals(spec.getAlgorithm()) && spec.getEncoded().length == AES_ENCRYPTION_KEY_BITS / 8;
         }
         return false;
     }

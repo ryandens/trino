@@ -4326,7 +4326,7 @@ class StatementAnalyzer
                 ResolvedWindow window = analysis.getWindow(windowFunction);
                 // TODO get function requirements from window function metadata when we have it
                 String name = windowFunction.getName().toString().toLowerCase(ENGLISH);
-                if (name.equals("lag") || name.equals("lead")) {
+                if ("lag".equals(name) || "lead".equals(name)) {
                     if (window.getOrderBy().isEmpty()) {
                         throw semanticException(MISSING_ORDER_BY, (Node) windowFunction.getWindow().orElseThrow(), "%s function requires an ORDER BY window clause", windowFunction.getName());
                     }

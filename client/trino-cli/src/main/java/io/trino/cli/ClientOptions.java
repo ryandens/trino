@@ -378,7 +378,7 @@ public class ClientOptions
         if (krb5DisableRemoteServiceHostnameCanonicalization) {
             builder.setKerberosUseCanonicalHostname(false);
         }
-        boolean useSecureConnection = uri.getScheme().equals("https") || (uri.getScheme().equals("trino") && uri.getPort() == 443);
+        boolean useSecureConnection = "https".equals(uri.getScheme()) || ("trino".equals(uri.getScheme()) && uri.getPort() == 443);
         if (useSecureConnection) {
             builder.setSsl(true);
         }

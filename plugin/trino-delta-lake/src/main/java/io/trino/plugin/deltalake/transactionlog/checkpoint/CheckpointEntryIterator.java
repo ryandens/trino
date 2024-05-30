@@ -402,7 +402,7 @@ public class CheckpointEntryIterator
             throw new TrinoException(DELTA_LAKE_INVALID_SCHEMA,
                     format("Expected block %s to have %d children, but found %s", jobRow, jobFields, jobRow.getFieldCount()));
         }
-        RowType.Field jobField = type.getFields().stream().filter(field -> field.getName().orElseThrow().equals("job")).collect(onlyElement());
+        RowType.Field jobField = type.getFields().stream().filter(field -> "job".equals(field.getName().orElseThrow())).collect(onlyElement());
         CheckpointFieldReader job = new CheckpointFieldReader(session, jobRow, (RowType) jobField.getType());
 
         SqlRow notebookRow = commitInfo.getRow("notebook");
@@ -410,7 +410,7 @@ public class CheckpointEntryIterator
             throw new TrinoException(DELTA_LAKE_INVALID_SCHEMA,
                     format("Expected block %s to have %d children, but found %s", notebookRow, notebookFields, notebookRow.getFieldCount()));
         }
-        RowType.Field notebookField = type.getFields().stream().filter(field -> field.getName().orElseThrow().equals("notebook")).collect(onlyElement());
+        RowType.Field notebookField = type.getFields().stream().filter(field -> "notebook".equals(field.getName().orElseThrow())).collect(onlyElement());
         CheckpointFieldReader notebook = new CheckpointFieldReader(session, notebookRow, (RowType) notebookField.getType());
 
         CommitInfoEntry result = new CommitInfoEntry(
@@ -485,7 +485,7 @@ public class CheckpointEntryIterator
                     format("Expected block %s to have %d children, but found %s", formatRow, formatFields, formatRow.getFieldCount()));
         }
 
-        RowType.Field formatField = type.getFields().stream().filter(field -> field.getName().orElseThrow().equals("format")).collect(onlyElement());
+        RowType.Field formatField = type.getFields().stream().filter(field -> "format".equals(field.getName().orElseThrow())).collect(onlyElement());
         CheckpointFieldReader format = new CheckpointFieldReader(session, formatRow, (RowType) formatField.getType());
         MetadataEntry result = new MetadataEntry(
                 metadata.getString("id"),

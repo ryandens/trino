@@ -365,8 +365,8 @@ public class MySqlClient
     @Override
     protected boolean filterSchema(String schemaName)
     {
-        if (schemaName.equalsIgnoreCase("mysql")
-                || schemaName.equalsIgnoreCase("sys")) {
+        if ("mysql".equalsIgnoreCase(schemaName)
+                || "sys".equalsIgnoreCase(schemaName)) {
             return false;
         }
         return super.filterSchema(schemaName);
@@ -1163,7 +1163,7 @@ public class MySqlClient
         try (java.sql.Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("SHOW VARIABLES LIKE 'gtid_mode'")) {
             if (resultSet.next()) {
-                return !resultSet.getString("Value").equalsIgnoreCase("OFF");
+                return !"OFF".equalsIgnoreCase(resultSet.getString("Value"));
             }
 
             return false;

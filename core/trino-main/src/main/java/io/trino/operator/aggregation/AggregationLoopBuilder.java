@@ -90,7 +90,7 @@ final class AggregationLoopBuilder
 
         // it is simpler to find the method with reflection than using lookup().findStatic because of the complex signature
         Method invokeMethod = Arrays.stream(clazz.getMethods())
-                .filter(method -> method.getName().equals("invoke"))
+                .filter(method -> "invoke".equals(method.getName()))
                 .collect(onlyElement());
 
         try {

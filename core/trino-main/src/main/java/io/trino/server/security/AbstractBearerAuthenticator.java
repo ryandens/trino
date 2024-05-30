@@ -60,7 +60,7 @@ public abstract class AbstractBearerAuthenticator
 
         String header = headers.get(0);
         int space = header.indexOf(' ');
-        if ((space < 0) || !header.substring(0, space).equalsIgnoreCase("bearer")) {
+        if ((space < 0) || !"bearer".equalsIgnoreCase(header.substring(0, space))) {
             throw needAuthentication(request, Optional.empty(), null);
         }
         String token = header.substring(space + 1).trim();

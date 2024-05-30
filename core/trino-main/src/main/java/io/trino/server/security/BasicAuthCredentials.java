@@ -51,7 +51,7 @@ public class BasicAuthCredentials
         requireNonNull(header, "header is null");
 
         int space = header.indexOf(' ');
-        if ((space < 0) || !header.substring(0, space).equalsIgnoreCase("basic")) {
+        if ((space < 0) || !"basic".equalsIgnoreCase(header.substring(0, space))) {
             return Optional.empty();
         }
         String credentials = decodeCredentials(header.substring(space + 1).trim());

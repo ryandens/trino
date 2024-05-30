@@ -2383,7 +2383,7 @@ public abstract class AbstractTestJoinQueries
                 .getQueryStats();
         int actualJoinOutputPositions = stats.getOperatorSummaries()
                 .stream()
-                .filter(summary -> summary.getOperatorType().equals("LookupJoinOperator"))
+                .filter(summary -> "LookupJoinOperator".equals(summary.getOperatorType()))
                 .map(OperatorStats::getOutputPositions)
                 .mapToInt(Math::toIntExact)
                 .sum();

@@ -394,7 +394,7 @@ public class LegacyAccessControl
     @Override
     public boolean canExecuteFunction(ConnectorSecurityContext context, SchemaRoutineName function)
     {
-        return !function.getSchemaName().equals("system");
+        return !"system".equals(function.getSchemaName());
     }
 
     @Override

@@ -592,7 +592,7 @@ public class SqlStandardAccessControl
     @Override
     public boolean canExecuteFunction(ConnectorSecurityContext context, SchemaRoutineName function)
     {
-        return !function.getSchemaName().equals("system") || isAdmin(context);
+        return !"system".equals(function.getSchemaName()) || isAdmin(context);
     }
 
     @Override

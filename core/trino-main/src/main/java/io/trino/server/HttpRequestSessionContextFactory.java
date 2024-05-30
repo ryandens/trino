@@ -430,7 +430,7 @@ public class HttpRequestSessionContextFactory
     private static Optional<TransactionId> parseTransactionId(String transactionId)
     {
         transactionId = trimEmptyToNull(transactionId);
-        if (transactionId == null || transactionId.equalsIgnoreCase("none")) {
+        if (transactionId == null || "none".equalsIgnoreCase(transactionId)) {
             return Optional.empty();
         }
         try {

@@ -124,7 +124,7 @@ public class DeltaLakeHistoryTable
         }
 
         int versionColumnIndex = IntStream.range(0, tableMetadata.getColumns().size())
-                .filter(i -> tableMetadata.getColumns().get(i).getName().equals("version"))
+                .filter(i -> "version".equals(tableMetadata.getColumns().get(i).getName()))
                 .boxed()
                 .collect(onlyElement());
 

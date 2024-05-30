@@ -1774,7 +1774,7 @@ public abstract class GridUnsafe
     {
         String arch = System.getProperty("os.arch");
 
-        boolean res = arch.equals("i386") || arch.equals("x86") || arch.equals("amd64") || arch.equals("x86_64");
+        boolean res = "i386".equals(arch) || "x86".equals(arch) || "amd64".equals(arch) || "x86_64".equals(arch);
 
         if (!res) {
             res = IgniteSystemProperties.getBoolean(IgniteSystemProperties.IGNITE_MEMORY_UNALIGNED_ACCESS, false);

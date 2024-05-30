@@ -55,7 +55,7 @@ public class CassandraPartition
 
     public boolean isUnpartitioned()
     {
-        return partitionId.equals(UNPARTITIONED_ID);
+        return UNPARTITIONED_ID.equals(partitionId);
     }
 
     @JsonProperty
