@@ -25,6 +25,7 @@ import io.trino.tempto.Requirement;
 import io.trino.tempto.RequirementsProvider;
 import io.trino.tempto.configuration.Configuration;
 import io.trino.tempto.fulfillment.table.ImmutableTableRequirement;
+import java.nio.file.Files;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -448,7 +449,7 @@ public class TestTrinoCli
                 .map(matcher::trimLeadingFrom)
                 .collect(joining("\n"));
 
-        File tempFile = File.createTempFile(".trino_config", "");
+        File tempFile = Files.createTempFile(".trino_config", "").toFile();
         tempFile.deleteOnExit();
         writeString(tempFile.toPath(), fileContent);
 

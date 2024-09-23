@@ -69,6 +69,7 @@ import io.trino.testing.TestingConnectorBehavior;
 import io.trino.testing.sql.TestTable;
 import io.trino.testing.sql.TrinoSqlExecutor;
 import io.trino.type.TypeDeserializer;
+import java.nio.file.Files;
 import org.assertj.core.api.AbstractLongAssert;
 import org.intellij.lang.annotations.Language;
 import org.junit.jupiter.api.Test;
@@ -7936,7 +7937,7 @@ public abstract class BaseHiveConnectorTest
     private static File createAvroSchemaFile()
             throws Exception
     {
-        File schemaFile = File.createTempFile("avro_single_column-", ".avsc");
+        File schemaFile = Files.createTempFile("avro_single_column-", ".avsc").toFile();
         String schema = "{\n" +
                 "  \"namespace\": \"io.trino.test\",\n" +
                 "  \"name\": \"single_column\",\n" +
@@ -7951,7 +7952,7 @@ public abstract class BaseHiveConnectorTest
     private static File createAvroCamelCaseSchemaFile()
             throws Exception
     {
-        File schemaFile = File.createTempFile("avro_camelCamelCase_col-", ".avsc");
+        File schemaFile = Files.createTempFile("avro_camelCamelCase_col-", ".avsc").toFile();
         String schema = "{\n" +
                 "  \"namespace\": \"io.trino.test\",\n" +
                 "  \"name\": \"camelCase\",\n" +
@@ -7967,7 +7968,7 @@ public abstract class BaseHiveConnectorTest
     private static File createAvroNestedCamelCaseSchemaFile()
             throws Exception
     {
-        File schemaFile = File.createTempFile("avro_camelCamelCase_col-", ".avsc");
+        File schemaFile = Files.createTempFile("avro_camelCamelCase_col-", ".avsc").toFile();
         String schema = """
                 {
                     "namespace": "io.trino.test",

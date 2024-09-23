@@ -42,6 +42,7 @@ import io.trino.spi.type.Int128;
 import io.trino.spi.type.IntegerType;
 import io.trino.spi.type.TypeManager;
 import io.trino.util.DateTimeUtils;
+import java.nio.file.Files;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -187,7 +188,7 @@ public class TestCheckpointWriter
 
         CheckpointWriter writer = new CheckpointWriter(typeManager, checkpointSchemaManager, "test");
 
-        File targetFile = File.createTempFile("testCheckpointWriteReadRoundtrip-", ".checkpoint.parquet");
+        File targetFile = Files.createTempFile("testCheckpointWriteReadRoundtrip-", ".checkpoint.parquet").toFile();
         targetFile.deleteOnExit();
 
         String targetPath = "file://" + targetFile.getAbsolutePath();
@@ -323,7 +324,7 @@ public class TestCheckpointWriter
 
         CheckpointWriter writer = new CheckpointWriter(typeManager, checkpointSchemaManager, "test");
 
-        File targetFile = File.createTempFile("testCheckpointWriteReadRoundtrip-", ".checkpoint.parquet");
+        File targetFile = Files.createTempFile("testCheckpointWriteReadRoundtrip-", ".checkpoint.parquet").toFile();
         targetFile.deleteOnExit();
 
         String targetPath = "file://" + targetFile.getAbsolutePath();
@@ -391,7 +392,7 @@ public class TestCheckpointWriter
 
         CheckpointWriter writer = new CheckpointWriter(typeManager, checkpointSchemaManager, "test");
 
-        File targetFile = File.createTempFile("testCheckpointWriteReadRoundtrip-", ".checkpoint.parquet");
+        File targetFile = Files.createTempFile("testCheckpointWriteReadRoundtrip-", ".checkpoint.parquet").toFile();
         targetFile.deleteOnExit();
 
         String targetPath = "file://" + targetFile.getAbsolutePath();

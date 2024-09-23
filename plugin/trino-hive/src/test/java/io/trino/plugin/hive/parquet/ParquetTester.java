@@ -67,6 +67,7 @@ import io.trino.spi.type.TimestampType;
 import io.trino.spi.type.Type;
 import io.trino.spi.type.VarcharType;
 import io.trino.testing.TestingConnectorSession;
+import java.nio.file.Files;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hive.ql.exec.FileSinkOperator.RecordWriter;
 import org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe;
@@ -705,7 +706,7 @@ class ParquetTester
         public TempFile(String prefix, String suffix)
         {
             try {
-                file = File.createTempFile(prefix, suffix);
+                file = Files.createTempFile(prefix, suffix).toFile();
                 verify(file.delete());
             }
             catch (IOException e) {

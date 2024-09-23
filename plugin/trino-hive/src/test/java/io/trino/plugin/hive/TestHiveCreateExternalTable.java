@@ -19,6 +19,7 @@ import io.trino.filesystem.Location;
 import io.trino.testing.AbstractTestQueryFramework;
 import io.trino.testing.MaterializedResult;
 import io.trino.testing.QueryRunner;
+import java.nio.file.Files;
 import org.intellij.lang.annotations.Language;
 import org.junit.jupiter.api.Test;
 
@@ -116,7 +117,7 @@ public class TestHiveCreateExternalTable
     public void testCreateExternalTableOnExistingPathToFile()
             throws Exception
     {
-        File tempFile = File.createTempFile("temp", ".tmp");
+        File tempFile = Files.createTempFile("temp", ".tmp").toFile();
         tempFile.deleteOnExit();
         String tableName = "test_create_external_on_file_" + randomNameSuffix();
 

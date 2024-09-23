@@ -78,6 +78,7 @@ import io.trino.spi.type.VarcharType;
 import io.trino.testing.MaterializedResult;
 import io.trino.testing.MaterializedRow;
 import io.trino.testing.TestingConnectorSession;
+import java.nio.file.Files;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hive.common.type.Date;
@@ -1494,7 +1495,7 @@ public final class TestHiveFileFormats
         JobConf jobConf = new JobConf(false);
         configureCompression(jobConf, compressionCodec);
 
-        File file = File.createTempFile("trino_test", "data");
+        File file = Files.createTempFile("trino_test", "data").toFile();
         file.delete();
         try {
             FileSinkOperator.RecordWriter recordWriter = outputFormat.getHiveRecordWriter(

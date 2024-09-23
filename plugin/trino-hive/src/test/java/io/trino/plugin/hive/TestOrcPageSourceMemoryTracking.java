@@ -52,6 +52,7 @@ import io.trino.sql.planner.plan.PlanNodeId;
 import io.trino.sql.relational.RowExpression;
 import io.trino.testing.TestingConnectorSession;
 import io.trino.testing.TestingSplit;
+import java.nio.file.Files;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -162,7 +163,7 @@ public class TestOrcPageSourceMemoryTracking
     public void setUp()
             throws Exception
     {
-        tempFile = File.createTempFile("trino_test_orc_page_source_memory_tracking", "orc");
+        tempFile = Files.createTempFile("trino_test_orc_page_source_memory_tracking", "orc").toFile();
         tempFile.delete();
         testPreparer = new TestPreparer(tempFile.getAbsolutePath());
     }
@@ -353,7 +354,7 @@ public class TestOrcPageSourceMemoryTracking
             columnBuilder.add(dataColumns[i]);
         }
         List<TestColumn> testColumns = columnBuilder.build();
-        File tempFile = File.createTempFile("trino_test_orc_page_source_max_read_bytes", "orc");
+        File tempFile = Files.createTempFile("trino_test_orc_page_source_max_read_bytes", "orc").toFile();
         tempFile.delete();
 
         TestPreparer testPreparer = new TestPreparer(tempFile.getAbsolutePath(), testColumns, rowCount, rowCount);

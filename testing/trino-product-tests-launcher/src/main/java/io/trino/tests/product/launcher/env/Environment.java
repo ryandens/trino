@@ -34,6 +34,7 @@ import dev.failsafe.Timeout;
 import io.airlift.log.Logger;
 import io.trino.tests.product.launcher.testcontainers.PrintingLogConsumer;
 import io.trino.tests.product.launcher.util.ConsoleTable;
+import java.nio.file.Files;
 import org.testcontainers.containers.Network;
 import org.testcontainers.containers.output.OutputFrame;
 import org.testcontainers.lifecycle.Startables;
@@ -651,7 +652,7 @@ public final class Environment
             ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
             File tempFile;
             try {
-                tempFile = File.createTempFile("tempto-configured-features-", ".yaml");
+                tempFile = Files.createTempFile("tempto-configured-features-", ".yaml").toFile();
                 objectMapper.writeValue(tempFile,
                         Map.of("databases",
                                 Map.of("presto",

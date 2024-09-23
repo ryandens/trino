@@ -39,6 +39,7 @@ import io.trino.spi.predicate.TupleDomain;
 import io.trino.spi.predicate.ValueSet;
 import io.trino.spi.type.Int128;
 import io.trino.spi.type.Type;
+import java.nio.file.Files;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -493,7 +494,7 @@ public class TestCheckpointEntryIterator
                 "test",
                 ParquetWriterOptions.builder().build());
 
-        File targetFile = File.createTempFile("testAddStatsProjection-", ".checkpoint.parquet");
+        File targetFile = Files.createTempFile("testAddStatsProjection-", ".checkpoint.parquet").toFile();
         targetFile.deleteOnExit();
 
         String targetPath = "file://" + targetFile.getAbsolutePath();
@@ -678,7 +679,7 @@ public class TestCheckpointEntryIterator
                         .setMaxPageSize(DataSize.ofBytes(64L))
                         .build());
 
-        File targetFile = File.createTempFile("testSkipAddEntries-", ".checkpoint.parquet");
+        File targetFile = Files.createTempFile("testSkipAddEntries-", ".checkpoint.parquet").toFile();
         targetFile.deleteOnExit();
 
         String targetPath = "file://" + targetFile.getAbsolutePath();
@@ -807,7 +808,7 @@ public class TestCheckpointEntryIterator
                         .setMaxPageSize(DataSize.ofBytes(128L))
                         .build());
 
-        File targetFile = File.createTempFile("testSkipAddEntries-", ".checkpoint.parquet");
+        File targetFile = Files.createTempFile("testSkipAddEntries-", ".checkpoint.parquet").toFile();
         targetFile.deleteOnExit();
 
         String targetPath = "file://" + targetFile.getAbsolutePath();
@@ -941,7 +942,7 @@ public class TestCheckpointEntryIterator
                         .setMaxPageSize(DataSize.ofBytes(64L))
                         .build());
 
-        File targetFile = File.createTempFile("testSkipRemoveEntries-", ".checkpoint.parquet");
+        File targetFile = Files.createTempFile("testSkipRemoveEntries-", ".checkpoint.parquet").toFile();
         targetFile.deleteOnExit();
 
         String targetPath = "file://" + targetFile.getAbsolutePath();
