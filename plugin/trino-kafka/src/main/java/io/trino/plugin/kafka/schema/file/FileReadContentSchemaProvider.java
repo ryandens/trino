@@ -14,6 +14,8 @@
 package io.trino.plugin.kafka.schema.file;
 
 import com.google.common.io.CharStreams;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import io.trino.plugin.kafka.schema.AbstractContentSchemaProvider;
 import io.trino.spi.TrinoException;
 
@@ -54,7 +56,7 @@ public class FileReadContentSchemaProvider
     {
         if (isURI(dataSchemaLocation.trim().toLowerCase(ENGLISH))) {
             try {
-                return new URL(dataSchemaLocation).openStream();
+                return Urls.create(dataSchemaLocation, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).openStream();
             }
             catch (MalformedURLException ignore) {
                 // TODO probably should not be ignored

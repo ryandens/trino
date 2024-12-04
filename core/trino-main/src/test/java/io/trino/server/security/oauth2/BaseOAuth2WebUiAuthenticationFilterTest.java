@@ -22,6 +22,8 @@ import io.airlift.http.client.HttpClientConfig;
 import io.airlift.http.client.jetty.JettyHttpClient;
 import io.airlift.log.Level;
 import io.airlift.log.Logging;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.impl.DefaultClaims;
@@ -437,7 +439,7 @@ public abstract class BaseOAuth2WebUiAuthenticationFilterTest
             throws MalformedURLException
     {
         assertThat(redirectUrl).isNotNull();
-        URL location = new URL(redirectUrl);
+        URL location = Urls.create(redirectUrl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         HttpUrl url = HttpUrl.parse(redirectUrl);
         assertThat(url).isNotNull();
         assertThat(location.getProtocol()).isEqualTo("https");
