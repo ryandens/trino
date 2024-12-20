@@ -15,6 +15,7 @@ package io.trino.plugin.atop;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -54,7 +55,7 @@ public class TestingAtopFactory
             this.date = date;
             this.reader = new BufferedReader(new InputStreamReader(dataStream, UTF_8));
             try {
-                line = reader.readLine();
+                line = BoundedLineReader.readLine(reader, 5_000_000);
             }
             catch (IOException e) {
                 line = null;
@@ -75,7 +76,7 @@ public class TestingAtopFactory
             }
             String currentLine = line;
             try {
-                line = reader.readLine();
+                line = BoundedLineReader.readLine(reader, 5_000_000);
             }
             catch (IOException e) {
                 line = null;

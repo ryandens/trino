@@ -13,6 +13,7 @@
  */
 package io.trino.spi.connector;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,8 +37,8 @@ final class SpiVersionHolder
             requireNonNull(resource, "version resource not found");
             try (InputStream inputStream = resource.openStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, UTF_8))) {
-                String spiVersion = reader.readLine();
-                if (spiVersion == null || spiVersion.isBlank() || reader.readLine() != null) {
+                String spiVersion = BoundedLineReader.readLine(reader, 5_000_000);
+                if (spiVersion == null || spiVersion.isBlank() || BoundedLineReader.readLine(reader, 5_000_000) != null) {
                     throw new IllegalStateException("Malformed version resource");
                 }
                 SPI_VERSION = spiVersion.strip();

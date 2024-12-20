@@ -14,6 +14,7 @@
 package io.trino.plugin.deltalake.transactionlog.checkpoint;
 
 import com.google.common.collect.ImmutableList;
+import io.github.pixee.security.BoundedLineReader;
 import io.trino.filesystem.Location;
 import io.trino.filesystem.TrinoFileSystem;
 import io.trino.filesystem.TrinoInputFile;
@@ -124,7 +125,7 @@ public class TransactionLogTail
                 new InputStreamReader(inputFile.newStream(), UTF_8),
                 JSON_LOG_ENTRY_READ_BUFFER_SIZE)) {
             ImmutableList.Builder<DeltaLakeTransactionLogEntry> resultsBuilder = ImmutableList.builder();
-            String line = reader.readLine();
+            String line = BoundedLineReader.readLine(reader, 5_000_000);
             while (line != null) {
                 DeltaLakeTransactionLogEntry deltaLakeTransactionLogEntry = parseJson(line);
                 if (deltaLakeTransactionLogEntry.getCommitInfo() != null && deltaLakeTransactionLogEntry.getCommitInfo().getVersion() == 0L) {
@@ -132,7 +133,7 @@ public class TransactionLogTail
                     deltaLakeTransactionLogEntry = deltaLakeTransactionLogEntry.withCommitInfo(deltaLakeTransactionLogEntry.getCommitInfo().withVersion(entryNumber));
                 }
                 resultsBuilder.add(deltaLakeTransactionLogEntry);
-                line = reader.readLine();
+                line = BoundedLineReader.readLine(reader, 5_000_000);
             }
 
             return Optional.of(resultsBuilder.build());
